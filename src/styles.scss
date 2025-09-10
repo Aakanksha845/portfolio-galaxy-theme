@@ -1,0 +1,214 @@
+@import "./styles/variables";
+@import "./styles/mixins";
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+/* ============================
+   STAR BACKGROUND + GALAXY THEME
+   ============================ */
+
+@function multiple-box-shadow($n, $color) {
+  $value: "#{random(2000)}px #{random(2000)}px #{$color}";
+  @for $i from 2 through $n {
+    $value: "#{$value}, #{random(2000)}px #{random(2000)}px #{$color}";
+  }
+  @return unquote($value);
+}
+
+$shadows-small: multiple-box-shadow(700, var(--star-color-small));
+$shadows-medium: multiple-box-shadow(200, var(--star-color-medium));
+$shadows-big: multiple-box-shadow(100, var(--star-color-big));
+
+/* ============================
+   CONTAINER + BACKGROUND
+   ============================ */
+
+.splash-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1;
+
+  /* Smooth background transitions for theme switching */
+  background: radial-gradient(
+    ellipse at center,
+    var(--space-bg-start) 0%,
+    var(--space-bg-end) 100%
+  );
+  transition: background 0.4s ease;
+}
+
+/* ============================
+   STAR LAYERS
+   ============================ */
+
+#stars,
+#stars2,
+#stars3 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 2;
+}
+
+#stars {
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: $shadows-small;
+  animation: animStar 50s linear infinite;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 2000px;
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow: $shadows-small;
+    animation: animStar 50s linear infinite;
+  }
+}
+
+#stars2 {
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: $shadows-medium;
+  animation: animStar 100s linear infinite;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 2000px;
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    box-shadow: $shadows-medium;
+    animation: animStar 100s linear infinite;
+  }
+}
+
+#stars3 {
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  box-shadow: $shadows-big;
+  animation: animStar 150s linear infinite;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 2000px;
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    box-shadow: $shadows-big;
+    animation: animStar 150s linear infinite;
+  }
+}
+
+/* ============================
+   LAYOUT + CONTENT
+   ============================ */
+
+.layout-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.layout-content {
+  position: relative;
+  padding-top: 80px;
+  z-index: 200;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+.navbar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+/* ============================
+   SPLASH TEXT
+   ============================ */
+
+.splash-container #title {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  text-emphasis-color: whitesmoke;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-weight: 300;
+  white-space: pre-wrap;
+  transform: translateY(-50%);
+
+  /* Responsive typography */
+  font-size: clamp(1.2rem, 5vw, 3rem);
+  line-height: 1.4;
+  letter-spacing: clamp(2px, 1vw, 8px);
+
+  margin-top: -20px;
+  padding: 0 1rem;
+
+  // /* Gradient text effect */
+  .splash-screen-text {
+    background-image: linear-gradient(
+      to bottom,
+      rgb(251, 249, 249),
+      rgb(125, 116, 116)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 500;
+  }
+}
+
+/* ============================
+   RESPONSIVE ADJUSTMENTS
+   ============================ */
+
+@media (max-width: 480px) {
+  .splash-container #title {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .splash-container #title {
+    font-size: 3.5rem;
+    letter-spacing: 12px;
+  }
+}
+
+/* ============================
+   ANIMATIONS
+   ============================ */
+
+@keyframes animStar {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}
