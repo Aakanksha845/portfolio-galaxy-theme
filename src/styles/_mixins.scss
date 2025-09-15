@@ -1,0 +1,46 @@
+/* ============================
+   REUSABLE MIXINS
+   ============================ */
+
+/* Flexbox Centering */
+@mixin flex-center($direction: row, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+  gap: $gap;
+}
+
+/* Container Wrapper */
+@mixin container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Button Styling */
+@mixin button-style($bg-color, $text-color) {
+  background-color: $bg-color;
+  color: $text-color;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: var(--accent);
+    box-shadow: var(--glow-accent);
+  }
+}
+
+/* Galaxy Glow Effect */
+@mixin galaxy-glow($color: var(--accent)) {
+  text-shadow: 0 0 5px $color, 0 0 10px $color, 0 0 20px $color;
+}
+
+/* Responsive Text */
+@mixin responsive-text($min, $max) {
+  font-size: clamp($min, 2vw, $max);
+}

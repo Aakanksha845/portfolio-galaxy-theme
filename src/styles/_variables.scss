@@ -1,0 +1,62 @@
+/* ============================
+   THEME VARIABLES
+   ============================ */
+
+/* Default: Dark Mode */
+:root {
+  /* Core Colors */
+  --bg-color: #0d0d0d;
+  --text-color: #ffffff;
+  --heading-color: #e5e5e5;
+
+  /* Primary Brand Colors */
+  --primary: #7d2ae8; // Deep purple
+  --accent: #00c6ff; // Neon blue glow
+
+  /* UI Colors */
+  --card-bg: #1a1a1a;
+  --border-color: #2a2a2a;
+
+  /* Typography */
+  --font-primary: "Poppins", sans-serif;
+  --font-heading: "Raleway", sans-serif;
+
+  /* Shadows & Glows */
+  --glow-primary: 0 0 12px rgba(125, 42, 232, 0.6);
+  --glow-accent: 0 0 10px rgba(0, 198, 255, 0.6);
+
+  /* Spacing */
+  --section-padding: 4rem;
+  --container-width: 1200px;
+
+  /* Stars */
+  --star-color-small: rgba(255, 255, 255, 0.8); // bright white
+  --star-color-medium: rgba(255, 255, 255, 0.9); // slightly brighter
+  --star-color-big: rgba(255, 255, 255, 1); // brightest
+
+  --space-bg-start: #1a0022; // deep purple
+  --space-bg-end: #06061d; // almost black
+}
+
+/* Light Mode */
+[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --heading-color: #111111;
+
+  --primary: #6b46c1; // Softer purple
+  --accent: #3182ce; // Muted blue
+
+  --card-bg: #f9f9f9;
+  --border-color: #e5e5e5;
+
+  --glow-primary: 0 0 8px rgba(107, 70, 193, 0.5);
+  --glow-accent: 0 0 8px rgba(49, 130, 206, 0.5);
+
+  --star-color-small: rgba(0, 0, 0, 0.15); // subtle dark specks
+  --star-color-medium: rgba(0, 0, 0, 0.25);
+  --star-color-big: rgba(0, 0, 0, 0.3);
+
+  --space-bg-start: #f9f9f9; // soft white
+  --space-bg-end: #e0e0e0; // very light gray
+}
